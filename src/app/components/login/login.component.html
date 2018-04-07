@@ -1,0 +1,91 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Kodinger">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cyan Management System</title>
+  <link rel="stylesheet" type="text/css"
+        href="../../../assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css"
+        href="../../../assets/css/my-login.css">
+
+
+  <!-- Stylish Alert -->
+  <script src="../../../assets/js/alertify.min.js"></script>
+  <link type="text/css" rel="stylesheet"
+        href="../../../assets/css/alertify.min.css" />
+  <link type="text/css" rel="stylesheet"
+        href="../../../assets/css/themes/default.min.css" />
+
+</head>
+<body class="my-login-page" style="height: 700px"
+      background="../../../assets/img/caribbean1.png">
+
+
+
+
+
+
+<div>
+  <br> <br>
+</div>
+<!-- <div><h1 style="text-align:center;color:white">Cyan Management System</h1></div> -->
+<div style="text-align: center">
+  <img src="../../../assets/img/logo.png"
+       style="margin: 0 auto">
+</div>
+<div>
+  <br> <br>
+</div>
+<section class="h-100">
+  <div class="container h-100">
+    <div class="row justify-content-md-center h-100">
+      <div class="card-wrapper">
+
+        <div class="card fat">
+          <div class="card-body">
+            <h4 class="card-title">Login</h4>
+            <form method="POST" action="/login">
+
+              <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control" name="username"
+                       [(ngModel)]="username" required autofocus
+                       style="width: 310px"
+                >
+              </div>
+
+              <div class="form-group">
+                <label>Password </label>
+                <input type="password" class="form-control"
+                       name="password" required data-eye
+                       [(ngModel)]="password" style="width: 310px"
+                >
+              </div>
+
+              <div class="form-group">
+                <label> <input type="checkbox" name="remember">
+                  Remember Me
+                </label>
+
+              </div>
+
+              <div class="form-group no-margin">
+                <button type="submit" class="btn btn-primary btn-block" style="width: 310px" (click)="login()">
+                  Login</button>
+              </div>
+              <div class="margin-top20 text-center"></div>
+            </form>
+          </div>
+        </div>
+        <div class="footer"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="../../../assets/js/jquery.js"></script>
+
+<script
+  src="../../../assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../assets/js/my-login.js"></script>
+
+</body>

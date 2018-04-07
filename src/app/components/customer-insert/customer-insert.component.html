@@ -1,0 +1,277 @@
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Cyan Management System</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="../../../assets/css/bootstrap.min.css"
+        rel="stylesheet">
+
+  <!-- MetisMenu CSS -->
+  <link href="../../../assets/css/metisMenu.min.css"
+        rel="stylesheet">
+
+  <!-- DataTables CSS -->
+  <link
+    href="../../../assets/css/dataTables/dataTables.bootstrap.css"
+    rel="stylesheet">
+
+  <!-- DataTables Responsive CSS -->
+  <link
+    href="../../../assets/css/dataTables/dataTables.responsive.css"
+    rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="../../../assets/css/startmin.css"
+        rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="../../../assets/css/font-awesome.min.css"
+        rel="stylesheet" type="text/css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+  <!-- Stylish Alert -->
+  <script src="../../../assets/js/alertify.min.js"></script>
+  <link rel="stylesheet"
+        href="../../../assets/css/alertify.min.css" />
+  <link rel="stylesheet"
+        href="../../../assets/css/themes/default.min.css" />
+
+  <script type="text/javascript">
+    function confirmation(id,button) {
+      confirm = document.getElementById("confirm_"+id);
+      button.style.display="none";
+      confirm.style.display="inline";
+    }
+  </script>
+</head>
+<body>
+<script type="text/javascript">
+  if ("${message}" != "") {
+    alertify.set('notifier','position', 'top-center');
+    var flag;
+    if("${message}"=="Successfully Deleted"){
+      flag = "success";
+    }else{
+      flag = "error";
+    }
+    alertify.notify('${message}', flag, 5, function() {
+      console.log('dismissed');
+    });
+  }
+</script>
+
+<div id="wrapper">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"
+       style="background-color: #3071a9">
+    <div class="navbar-header">
+      <a class="navbar-brand"
+         (click)="redirect('menu')"
+         style="color: white; font-family: sans-serif; font-size: 22px">Cyan
+        Management System</a>
+    </div>
+
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span> <span
+      class="icon-bar"></span> <span class="icon-bar"></span> <span
+      class="icon-bar"></span>
+    </button>
+
+
+    <ul class="nav navbar-right navbar-top-links">
+      <li class="dropdown"><a class="dropdown-toggle"
+                              data-toggle="dropdown" href="#" style="background-color: #3071a9">
+        <i class="fa fa-user fa-fw"></i>Welcome, {{username}} <b
+        class="caret"></b>
+      </a>
+        <ul class="dropdown-menu dropdown-user">
+          <li><a href="../../../assets/logout"><i
+            class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+        </ul></li>
+    </ul>
+    <!-- /.navbar-top-links -->
+
+    <div class="navbar-default sidebar" role="navigation">
+      <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+
+          <li class="sidebar-search">
+            <div class="input-group custom-search-form">
+              <input type="text" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+									<button class="btn btn-primary" type="button">
+										<i class="fa fa-search"></i>
+									</button>
+								</span>
+            </div> <!-- /input-group -->
+          </li>
+
+          <li><a (click)="redirect('menu')"><i class="fa fa-dashboard fa-fw"></i>
+            Dashboard</a></li>
+
+          <li><a (click)="redirect('product')"><i
+            class="fa fa-cubes fa-fw"></i> Products</a></li>
+
+          <li><a (click)="redirect('order')"><i
+            class="fa fa-cart-arrow-down fa-fw"></i> Orders</a></li>
+
+          <li><a (click)="redirect('customer')" class="active"><i
+            class="fa fa-users fa-fw"></i> Customers</a></li>
+
+          <li ><a (click)="redirect('department')"><i
+            class="fa fa-building-o fa-fw"></i> Departments</a></li>
+
+          <li><a (click)="redirect('category')"><i
+            class="fa fa-book fa-fw"></i> Categories</a></li>
+
+          <li><a (click)="redirect('email')"><i
+            class="fa fa-envelope fa-fw"></i> Emails</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <!-- Content Begin  -->
+
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">
+          Add a customer
+          <div style="float: right">
+            <button id="new" type="button" class="btn btn-danger"
+                    style="align: right; width: 120px"
+                    (click)="redirect('/customer')">Return</button>
+          </div>
+        </h1>
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Please input the information.
+          </div>
+          <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-6">
+
+                  <div class="form-group">
+                    <label>Username(*)</label> <input name="username" [(ngModel)]="userName"
+                                                      class="form-control" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Real Name</label> <input name="realName" [(ngModel)]="realName"
+                                                    class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Phone</label> <input name="phone" class="form-control" [(ngModel)]="phone">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Address</label> <input name="address" [(ngModel)]="address"
+                                                  class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label></label>
+                  </div>
+                  <div style="text-align: center">
+                    <button class="btn btn-primary" (click)="insert()"
+                            style="width: 130px">Submit</button>
+                  </div>
+
+
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="password">Password(*)</label> <input [(ngModel)]="password"
+                    id="password" type="password" class="form-control"
+                    name="password" required data-eye>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Credit Card</label> <input name="creditCard" [(ngModel)]="creditCard"
+                                                      class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Email</label> <input name="email" class="form-control" [(ngModel)]="email">
+                  </div>
+                  <div class="form-group">
+                    <label>Zip Code</label> <input name="zip" [(ngModel)]="zip"
+                                                   class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label></label>
+                  </div>
+                  <div style="text-align: center">
+                    <button type="reset" class="btn btn-primary"
+                            style="width: 130px">Reset</button>
+                  </div>
+
+                </div>
+
+            </div>
+            <!-- /.row (nested) -->
+          </div>
+          <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+      </div>
+      <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /#page-wrapper -->
+
+
+  <!-- Content End  -->
+
+
+
+
+
+
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="../js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../js/metisMenu.min.js"></script>
+
+<!-- DataTables JavaScript -->
+<script src="../js/dataTables/jquery.dataTables.min.js"></script>
+<script src="../js/dataTables/dataTables.bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../js/startmin.js"></script>
+
+<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+<script>
+  $(document).ready(function() {
+    $('#dataTables-example').DataTable({
+      responsive: true
+    });
+  });
+</script>
+
+</body>
